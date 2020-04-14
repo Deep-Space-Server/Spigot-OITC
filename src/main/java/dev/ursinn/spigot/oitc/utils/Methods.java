@@ -103,17 +103,17 @@ public class Methods {
             }
 
             if (plugin.op.isSwordUnbreakable()) {
-                swordMeta.spigot().setUnbreakable(true);
+                swordMeta.setUnbreakable(true);
             }
             if (arena.isSwordUnbreakable()) {
-                swordMeta.spigot().setUnbreakable(true);
+                swordMeta.setUnbreakable(true);
             }
 
             if (plugin.op.isBowUnbreakable()) {
-                bowMeta.spigot().setUnbreakable(true);
+                bowMeta.setUnbreakable(true);
             }
             if (arena.isBowUnbreakable()) {
-                bowMeta.spigot().setUnbreakable(true);
+                bowMeta.setUnbreakable(true);
             }
         }
         sword.setItemMeta(swordMeta);
@@ -153,6 +153,7 @@ public class Methods {
         versions.put("v1_13_R1", false);
         versions.put("v1_13_R2", false);
         versions.put("v1_14_R1", false);
+        versions.put("v1_15_R1", false);
         return versions;
     }
 

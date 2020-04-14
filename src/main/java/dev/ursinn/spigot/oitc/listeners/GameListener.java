@@ -175,8 +175,7 @@ public class GameListener implements Listener {
             killer.setHealth(20D);
 
         Scoreboard board = killer.getScoreboard();
-        @SuppressWarnings("deprecation")
-        Score score = board.getObjective(DisplaySlot.SIDEBAR).getScore(killer);
+        Score score = board.getObjective(DisplaySlot.SIDEBAR).getScore(killer.getName());
         int kills = score.getScore();
         kills++;
         score.setScore(kills);

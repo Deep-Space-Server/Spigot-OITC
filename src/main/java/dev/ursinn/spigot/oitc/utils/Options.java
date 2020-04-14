@@ -132,9 +132,9 @@ public class Options {
     public List<SwordEnchantment> getSwordEnchantments() {
         List<SwordEnchantment> list = new ArrayList<>();
         for (Enchantment e : Enchantment.values()) {
-            boolean b = this.plugin.options.getBoolean("Enchantment." + e.getName() + ".use");
+            boolean b = this.plugin.options.getBoolean("Enchantment." + e.getKey().toString() + ".use");
             if (b) {
-                int level = this.plugin.options.getInt("Enchantment." + e.getName() + ".level");
+                int level = this.plugin.options.getInt("Enchantment." + e.getKey().toString() + ".level");
                 list.add(new SwordEnchantment(e, level));
             }
         }

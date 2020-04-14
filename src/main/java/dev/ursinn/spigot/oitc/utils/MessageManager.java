@@ -25,10 +25,12 @@
 
 package dev.ursinn.spigot.oitc.utils;
 
+import net.md_5.bungee.api.ChatColor;
+
 public class MessageManager {
 
     public String getMessage(MessageEnum e) {
-        return e.getDefault_value().replaceAll("%nms_version%", Methods.getNmsVersion());
+        return ChatColor.translateAlternateColorCodes('&', e.getDefault_value().replaceAll("%nms_version%", Methods.getNmsVersion()));
     }
 
 }
