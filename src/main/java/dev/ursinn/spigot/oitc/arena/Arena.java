@@ -594,6 +594,8 @@ public class Arena {
 					OITC.sendMessage(player, OITC.messageManager.getMessage(MessageEnum.ARENA_LOBBY_NOT_FOUND));
 				
 				player.getInventory().clear();
+				player.setHealth(20.0);
+				player.setFoodLevel(20);
 
 				if (canStart())
 					start();

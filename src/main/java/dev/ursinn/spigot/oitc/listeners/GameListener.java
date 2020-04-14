@@ -25,12 +25,6 @@
 
 package dev.ursinn.spigot.oitc.listeners;
 
-import dev.ursinn.spigot.oitc.OITC;
-import dev.ursinn.spigot.oitc.arena.Arena;
-import dev.ursinn.spigot.oitc.arena.Arenas;
-import dev.ursinn.spigot.oitc.arena.LeaveReason;
-import dev.ursinn.spigot.oitc.utils.MessageEnum;
-import dev.ursinn.spigot.oitc.utils.Methods;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -44,12 +38,27 @@ import org.bukkit.event.block.Action;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
+import org.bukkit.event.entity.EntityDamageEvent;
+import org.bukkit.event.entity.FoodLevelChangeEvent;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.entity.ProjectileHitEvent;
-import org.bukkit.event.player.*;
+import org.bukkit.event.player.PlayerCommandPreprocessEvent;
+import org.bukkit.event.player.PlayerDropItemEvent;
+import org.bukkit.event.player.PlayerInteractEvent;
+import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.event.player.PlayerLoginEvent;
+import org.bukkit.event.player.PlayerQuitEvent;
+import org.bukkit.event.player.PlayerRespawnEvent;
 import org.bukkit.scoreboard.DisplaySlot;
 import org.bukkit.scoreboard.Score;
 import org.bukkit.scoreboard.Scoreboard;
+
+import dev.ursinn.spigot.oitc.OITC;
+import dev.ursinn.spigot.oitc.arena.Arena;
+import dev.ursinn.spigot.oitc.arena.Arenas;
+import dev.ursinn.spigot.oitc.arena.LeaveReason;
+import dev.ursinn.spigot.oitc.utils.MessageEnum;
+import dev.ursinn.spigot.oitc.utils.Methods;
 
 public class GameListener implements Listener {
 
@@ -236,10 +245,7 @@ public class GameListener implements Listener {
         if (!Arenas.isInArena(player))
             return;
 
-        Arena arena = Arenas.getArena(player);
-        if (arena.isOn()) {
-            e.setCancelled(true);
-        }
+        e.setCancelled(true);
     }
 
     @EventHandler
@@ -264,10 +270,27 @@ public class GameListener implements Listener {
         if (!Arenas.isInArena(player))
             return;
 
-        Arena arena = Arenas.getArena(player);
-        if (arena.isOn()) {
-            e.setCancelled(true);
-        }
+        e.setCancelled(true);
+    }
+    
+    @EventHandler
+    public void onDamage(EntityDamageEvent event) {
+    	if(!(event.getEntity() instanceof Player))
+    		return;
+    	
+        Player player = (Player) event.getEntity();
+        if (!Arenas.isInArena(player))
+            return;
+
+        event.setCancelled(true);
+    }
+    
+    public void onHunger(FoodLevelChangeEvent event) {
+        Player player = (Player) event.getEntity();
+        if (!Arenas.isInArena(player))
+            return;
+
+        event.setCancelled(true);
     }
 
     @EventHandler
