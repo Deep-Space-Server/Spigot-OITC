@@ -317,10 +317,6 @@ public class Arena {
 		for (UUID s : players) {
 			if (Bukkit.getPlayer(s) != null) {
 				Player player = Bukkit.getPlayer(s);
-				if (Methods.getLobby() != null)
-					player.teleport(Methods.getLobby());
-				else
-					player.sendMessage(OITC.messageManager.getMessage(MessageEnum.ARENA_MAIN_LOBBY_NOT_FOUND));
 
 				player.setScoreboard(Bukkit.getScoreboardManager().getMainScoreboard());
 				loadInventory(player);
@@ -376,6 +372,16 @@ public class Arena {
 					}
 				}
 			}
+		}
+		
+		for(UUID u : players) {
+			Player player;
+			if((player = Bukkit.getPlayer(u)) == null) continue;
+			
+			if (Methods.getLobby() != null)
+				player.teleport(Methods.getLobby());
+			else
+				player.sendMessage(OITC.messageManager.getMessage(MessageEnum.ARENA_MAIN_LOBBY_NOT_FOUND));
 		}
 
 		if (gs == GameState.INGAME) {

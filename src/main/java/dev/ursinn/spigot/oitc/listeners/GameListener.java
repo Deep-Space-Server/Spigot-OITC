@@ -281,10 +281,15 @@ public class GameListener implements Listener {
         Player player = (Player) event.getEntity();
         if (!Arenas.isInArena(player))
             return;
+        
+        Arena a = Arenas.getArena(player);
+        
+        if(a.isOn()) return;
 
         event.setCancelled(true);
     }
     
+    @EventHandler
     public void onHunger(FoodLevelChangeEvent event) {
         Player player = (Player) event.getEntity();
         if (!Arenas.isInArena(player))
