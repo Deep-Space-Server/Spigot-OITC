@@ -118,6 +118,7 @@ public class OITC extends JavaPlugin {
                 }
             } catch (Exception e) {
                 getLogger().severe(messageManager.getMessage(MessageEnum.STARTUP_LOADING_ARENA_FAILED));
+            	e.printStackTrace();
             }
         } else {
             try {

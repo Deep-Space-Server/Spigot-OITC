@@ -144,12 +144,12 @@ public class GameListener implements Listener {
                 e.setDeathMessage("");
                 e.setDroppedExp(0);
 
-                Bukkit.getScheduler().scheduleSyncDelayedTask(this.plugin, () -> player.spigot().respawn(), 1);
-
-                if (player.getKiller() != null) {
-                    Player killer = player.getKiller();
-                    onPlayerKill(killer, player);
-                }
+                Player killer = player.getKiller();
+                Bukkit.getScheduler().scheduleSyncDelayedTask(this.plugin, () -> {
+                	player.spigot().respawn();
+                	if(killer != null) onPlayerKill(killer, player);
+                	
+                }, 1);
             }
         }
     }
