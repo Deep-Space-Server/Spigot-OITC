@@ -154,6 +154,9 @@ public class Methods {
         versions.put("v1_13_R2", false);
         versions.put("v1_14_R1", false);
         versions.put("v1_15_R1", false);
+        versions.put("v1_16_R1", false);
+        versions.put("v1_16_R2", false);
+        versions.put("v1_16_R3", false);
         return versions;
     }
 
